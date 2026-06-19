@@ -9,7 +9,7 @@
 
   const VALID_NAME = "habbit";
   const VALID_PASSWORD = "admin10";
-  const SESSION_KEY = "habitTracker_session";
+  const SESSION_KEY = "isLoggedIn";
 
   const form = document.getElementById("loginForm");
   const nameInput = document.getElementById("loginName");
@@ -20,7 +20,7 @@
 
   // kalau udah login (sesi masih aktif di tab ini), langsung lempar ke index
   if (sessionStorage.getItem(SESSION_KEY) === "true") {
-    window.location.href = "../index.html";
+    window.location.href = "portal.html";
     return;
   }
 
@@ -46,7 +46,7 @@
       hideError();
       sessionStorage.setItem(SESSION_KEY, "true");
       sessionStorage.setItem("habitTracker_userName", name);
-      window.location.href = "../index.html";
+      window.location.href = "portal.html";
     } else {
       showError();
     }

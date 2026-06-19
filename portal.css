@@ -1,0 +1,242 @@
+/* =========================================================
+   PROJECT PORTAL — NEO BRUTALISM THEME
+   ========================================================= */
+
+:root {
+  --ink: #14110F;
+  --bg: #EFEAFE;
+  --bg-dot: #DCD3FB;
+  --surface: #FFFFFF;
+
+  --purple: #7C5CFC;
+  --purple-dark: #5B3FE0;
+  --orange: #FF6B35;
+  --green: #2ED192;
+  --blue: #4D7CFE;
+  --pink: #FF5C8A;
+  --yellow: #FFD23F;
+
+  --border-w: 3px;
+  --shadow-offset: 6px;
+  --radius: 16px;
+
+  --font-display: 'Archivo Black', 'Space Grotesk', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--bg-dot) 1.6px, transparent 1.6px);
+  background-size: 22px 22px;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ---------- decorative shapes ---------- */
+.bg-shape {
+  position: fixed;
+  z-index: 0;
+  border: var(--border-w) solid var(--ink);
+  pointer-events: none;
+  opacity: 0.9;
+}
+.shape-1 {
+  width: 160px; height: 160px;
+  background: var(--yellow);
+  top: -50px; right: -50px;
+  border-radius: 50%;
+}
+.shape-2 {
+  width: 100px; height: 100px;
+  background: var(--blue);
+  bottom: 80px; left: -35px;
+  transform: rotate(20deg);
+  border-radius: 18px;
+}
+.shape-3 {
+  width: 70px; height: 70px;
+  background: var(--pink);
+  top: 38%; right: 3%;
+  transform: rotate(45deg);
+  border-radius: 14px;
+  display: none;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 56px 24px 60px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+.portal-header {
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.brand-mark {
+  width: 60px; height: 60px;
+  margin: 0 auto 16px;
+  background: var(--ink);
+  color: var(--yellow);
+  border: var(--border-w) solid var(--ink);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 6px 6px 0 var(--purple);
+  transform: rotate(-6deg);
+}
+.brand-mark svg { width: 30px; height: 30px; }
+
+.portal-header h1 {
+  font-family: var(--font-display);
+  font-size: 34px;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+.portal-header h1 span { color: var(--purple-dark); }
+
+.portal-tagline {
+  margin: 10px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.6;
+}
+
+/* =========================================================
+   APP GRID
+   ========================================================= */
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.app-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--surface);
+  border: var(--border-w) solid var(--ink);
+  border-radius: var(--radius);
+  padding: 26px 24px;
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  min-height: 180px;
+}
+
+.app-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: calc(var(--shadow-offset) + 4px) calc(var(--shadow-offset) + 4px) 0 var(--ink);
+}
+.app-card:active {
+  transform: translate(1px, 1px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.rotate-l { transform: rotate(-1deg); }
+.rotate-r { transform: rotate(1deg); }
+.rotate-l:hover { transform: rotate(-1deg) translate(-4px, -4px); }
+.rotate-r:hover { transform: rotate(1deg) translate(-4px, -4px); }
+
+.app-icon {
+  width: 52px; height: 52px;
+  border: 2.5px solid var(--ink);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.app-icon svg { width: 26px; height: 26px; }
+
+.card-blue .app-icon   { background: var(--blue); color: #fff; }
+.card-orange .app-icon { background: var(--orange); color: var(--ink); }
+.card-green .app-icon  { background: var(--green); color: var(--ink); }
+.card-pink .app-icon   { background: var(--pink); color: var(--ink); }
+
+.app-name {
+  font-family: var(--font-heading);
+  font-size: 19px;
+  margin: 0 0 6px;
+}
+
+.app-desc {
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0.65;
+  margin: 0;
+  line-height: 1.45;
+  flex: 1;
+}
+
+.app-path {
+  display: inline-block;
+  width: fit-content;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  border-radius: 100px;
+  padding: 4px 10px;
+  margin-top: 14px;
+}
+
+.app-arrow {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 32px; height: 32px;
+  border: 2.5px solid var(--ink);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.app-arrow svg { width: 15px; height: 15px; }
+.app-card:hover .app-arrow {
+  transform: translateX(3px);
+  background: var(--yellow);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.portal-footer {
+  text-align: center;
+  margin-top: 48px;
+}
+.portal-footer p {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.5;
+  margin: 0;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 640px) {
+  .app-grid { grid-template-columns: 1fr; }
+  .portal-header h1 { font-size: 26px; }
+  .wrap { padding: 40px 18px 50px; }
+}

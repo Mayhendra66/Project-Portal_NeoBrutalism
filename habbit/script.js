@@ -559,40 +559,7 @@
     }
   }
 
-  /* ---------------------------------------------------------
-     AUTH GUARD — tendang ke login.html kalau belum login
-  --------------------------------------------------------- */
-  function checkAuth() {
-    if (sessionStorage.getItem(SESSION_KEY) !== "true") {
-      window.location.href = "login.html";
-      return false;
-    }
-    return true;
-  }
-
-  function setupLogout() {
-    const logoutBtn = document.getElementById("logoutBtn");
-    if (!logoutBtn) return;
-    logoutBtn.addEventListener("click", () => {
-      Swal.fire({
-        title: "Logout sekarang?",
-        text: "Lo bakal balik ke halaman login.",
-        icon: "question",
-        showCancelButton: true,
-        confirmButtonText: "Ya, logout",
-        cancelButtonText: "Batal",
-        reverseButtons: true,
-        customClass: swalNeoClasses()
-      }).then(result => {
-        if (result.isConfirmed) {
-          sessionStorage.removeItem(SESSION_KEY);
-          sessionStorage.removeItem("habitTracker_userName");
-          window.location.href = "auth/login.html";
-        }
-      });
-    });
-  }
-
+  
   /* ---------------------------------------------------------
      BADGE REWARD SYSTEM (Bonus)
   --------------------------------------------------------- */

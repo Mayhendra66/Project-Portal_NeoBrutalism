@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Portal — Pilih Aplikasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="portal.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+  /* Style opsional untuk menyesuaikan tombol logout bertema Neo-Brutalism */
+  .logout-container {
+    margin-top: 1rem;
+  }
+  #logoutBtn {
+    background: #ff5c5c;
+    color: #000;
+    padding: 0.6rem 1.2rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0px #000;
+    cursor: pointer;
+    transition: all 0.1s ease;
+  }
+  #logoutBtn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
+  }
+  #logoutBtn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000;
+  }
+</style>
+</head>
+<body>
+
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+  <div class="bg-shape shape-3"></div>
+
+  <div class="wrap">
+
+    <header class="portal-header">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 2L3 14h7l-1 8 11-14h-7l1-6z" fill="currentColor"/>
+        </svg>
+      </div>
+      <h1>Project<span> Portal</span></h1>
+      <p class="portal-tagline">pilih project yang mau lo buka ✦ tugas kuliah edition</p>
+      
+      <div class="logout-container">
+        <button id="logoutBtn">🚪 Logout Sistem</button>
+      </div>
+    </header>
+
+    <main class="app-grid">
+
+      <a class="app-card card-blue rotate-l" href="todoapp/index.html">
+        <div class="app-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 11l2.5 2.5L16 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 class="app-name">Todo App</h2>
+        <p class="app-desc">Catat &amp; checklist tugas harian lo.</p>
+        <span class="app-path">/todoapp</span>
+        <div class="app-arrow">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="app-card card-orange rotate-r" href="habbit/index.html">
+        <div class="app-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c2 0 3-2 2-4 3 2 4 6 4 8a7 7 0 11-14 0c0-5 3-8 5-13z" fill="currentColor"/>
+          </svg>
+        </div>
+        <h2 class="app-name">Habit Tracker</h2>
+        <p class="app-desc">Bangun kebiasaan, jaga streak tiap hari.</p>
+        <span class="app-path">/habbit</span>
+        <div class="app-arrow">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="app-card card-green rotate-l" href="expense/index.html">
+        <div class="app-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 7h18M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l2-4h14l2 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="13" r="2.5" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h2 class="app-name">Expense Tracker</h2>
+        <p class="app-desc">Pantau keluar masuk uang jajan lo.</p>
+        <span class="app-path">/expense</span>
+        <div class="app-arrow">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="app-card card-pink rotate-r" href="absensi/index.html">
+        <div class="app-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9 15l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 class="app-name">Absensi Digital</h2>
+        <p class="app-desc">Check-in kehadiran harian secara digital.</p>
+        <span class="app-path">/absensi</span>
+        <div class="app-arrow">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </a>
+
+    </main>
+
+    <footer class="portal-footer">
+      <p>Dibuat buat tugas kuliah ✦ tema neo-brutalism</p>
+    </footer>
+
+  </div>
+
+  <script>
+    const SESSION_KEY = "isLoggedIn"; // Ganti sesuai key session login utama Anda
+
+    // Fungsi styling tambahan SweetAlert agar serasi dengan Neo-Brutalism (jika dikonfigurasi di CSS)
+    function swalNeoClasses() {
+      return {
+        popup: 'neo-popup',
+        confirmButton: 'neo-btn-confirm',
+        cancelButton: 'neo-btn-cancel'
+      };
+    }
+
+    /* ---------------------------------------------------------
+       AUTH GUARD — tendang ke login.html kalau belum login
+    --------------------------------------------------------- */
+    function checkAuth() {
+  if (sessionStorage.getItem(SESSION_KEY) !== "true") {
+    window.location.href = "index.html"; // tadinya "portal.html" ❌
+    return false;
+  }
+  return true;
+}
+
+    /* ---------------------------------------------------------
+       SETUP LOGOUT HANDLER
+    --------------------------------------------------------- */
+    function setupLogout() {
+      const logoutBtn = document.getElementById("logoutBtn");
+      if (!logoutBtn) return;
+      
+      logoutBtn.addEventListener("click", () => {
+        Swal.fire({
+          title: "Logout sekarang?",
+          text: "Lo bakal balik ke halaman login.",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonText: "Ya, logout",
+          cancelButtonText: "Batal",
+          reverseButtons: true,
+          customClass: swalNeoClasses()
+        }).then(result => {
+          if (result.isConfirmed) {
+            sessionStorage.removeItem(SESSION_KEY);
+            sessionStorage.removeItem("habitTracker_userName");
+            window.location.href = "index.html";
+          }
+        });
+      });
+    }
+
+    // Inisialisasi Alur Aplikasi
+    document.addEventListener("DOMContentLoaded", () => {
+      if (checkAuth()) {
+        setupLogout();
+      }
+    });
+  </script>
+</body>
+</html>
