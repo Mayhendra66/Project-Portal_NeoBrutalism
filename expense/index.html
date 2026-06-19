@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker Pribadi — Neo Brutalism</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+
+  <div class="wrap">
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Expense<span>Tracker</span></h1>
+          <p class="tagline">✦ catat duit masuk keluar, jangan sampai boncos</p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <select id="currencySelector" class="deadline-select">
+          <option value="IDR">IDR (Rp)</option>
+          <option value="USD">USD ($)</option>
+          <option value="SGD">SGD ($)</option>
+        </select>
+        <button class="btn btn-ghost" id="importJsonBtn">
+          📥 Import JSON
+        </button>
+        <button class="btn btn-primary" id="exportPdfBtn">
+          📄 Export PDF
+        </button>
+      </div>
+    </header>
+
+    <section class="stats">
+      <div class="stat-card stat-yellow">
+        <div class="stat-icon">💰</div>
+        <div class="stat-value" id="totalSaldo">Rp 0</div>
+        <div class="stat-label">Total Saldo</div>
+      </div>
+
+      <div class="stat-card stat-green">
+        <div class="stat-icon">📈</div>
+        <div class="stat-value" id="totalPemasukan">Rp 0</div>
+        <div class="stat-label">Pemasukan Bulan Ini</div>
+      </div>
+
+      <div class="stat-card stat-pink">
+        <div class="stat-icon">📉</div>
+        <div class="stat-value" id="totalPengeluaran">Rp 0</div>
+        <div class="stat-label">Pengeluaran Bulan Ini</div>
+      </div>
+    </section>
+
+    <div class="main-layout">
+      
+      <div class="main-column">
+        
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Grafik Cashflow</h2>
+            <span class="chip chip-purple">Real-time Data</span>
+          </div>
+          <div class="chart-box">
+            <canvas id="cashflowChart" height="200"></canvas>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head-filter">
+            <h2>Riwayat Transaksi</h2>
+            
+            <div class="filter-row">
+              <input type="text" id="searchTransaction" class="deadline-select" placeholder="Cari transaksi...">
+              <select id="monthlyFilter" class="deadline-select">
+                <option value="all">Semua Bulan</option>
+                <option value="01">Januari</option>
+                <option value="02">Februari</option>
+                <option value="03">Maret</option>
+                <option value="04">April</option>
+                <option value="05">Mei</option>
+                <option value="06">Juni</option>
+                <option value="07">Juli</option>
+                <option value="08">Agustus</option>
+                <option value="09">September</option>
+                <option value="10">Oktobor</option>
+                <option value="11">November</option>
+                <option value="12">Desember</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="transaction-list" id="transactionContainer"></div>
+        </section>
+
+      </div>
+
+      <div class="side-column">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Tambah Transaksi</h2>
+          </div>
+          
+          <form id="transactionForm" class="modal-form">
+            <div class="field">
+              <label for="txTitle" class="field-label">Nama / Judul Transaksi</label>
+              <input type="text" id="txTitle" placeholder="cth: Bayar Kosan" required>
+            </div>
+
+            <div class="field">
+              <label for="txAmount" class="field-label">Jumlah (Nominal)</label>
+              <input type="number" id="txAmount" placeholder="cth: 50000" required>
+            </div>
+
+            <div class="field">
+              <label for="txType" class="field-label">Tipe Transaksi</label>
+              <select id="txType" required>
+                <option value="income">Pemasukan (Cash In)</option>
+                <option value="expense">Pengeluaran (Cash Out)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="txCategory" class="field-label">Kategori Transaksi</label>
+              <select id="txCategory" required>
+                <option value="Makanan">Makanan & Minuman</option>
+                <option value="Transportasi">Transportasi</option>
+                <option value="Gaji">Gaji & Pendapatan</option>
+                <option value="Hiburan">Hiburan / Hobi</option>
+                <option value="Lainnya">Lain-lain</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="txDate" class="field-label">Tanggal Transaksi</label>
+              <input type="date" id="txDate" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
+              ➕ Catat Transaksi
+            </button>
+          </form>
+        </section>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+</html>

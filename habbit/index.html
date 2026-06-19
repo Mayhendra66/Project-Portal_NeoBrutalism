@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Habit Tracker — Stay Consistent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- decorative blobs -->
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+  <div class="bg-shape shape-3"></div>
+
+  <div class="wrap">
+
+    <!-- ===== HEADER ===== -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 2L3 14h7l-1 8 11-14h-7l1-6z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Habit<span>Tracker</span></h1>
+          <p class="tagline">no streak, no life ✦ track your daily grind</p>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <button class="btn btn-ghost" id="logoutBtn" title="Logout">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Logout
+        </button>
+        <button class="btn btn-primary" id="openAddModalBtn">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          New Habit
+        </button>
+      </div>
+    </header>
+
+    <!-- ===== DAILY QUOTE (Fetch API) ===== -->
+    <div class="quote-bar" id="quoteBar">
+      <div class="quote-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 7h4v6H8l-1 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M14 7h4v6h-3l-1 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <p id="quoteText">Loading today's motivation...</p>
+    </div>
+
+    <!-- ===== REMINDER BANNER ===== -->
+    <div class="reminder-bar hidden" id="reminderBar">
+      <div class="reminder-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M13.7 21a2 2 0 01-3.4 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <p id="reminderText">Masih ada habit yang belum dicheck hari ini!</p>
+      <div class="reminder-actions">
+        <button class="reminder-mute" id="muteReminderBtn" title="Matiin pengingat">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 3l18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="reminder-dismiss" id="dismissReminderBtn" title="Tutup">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== STATS ===== -->
+    <section class="stats" id="statsSection">
+      <div class="stat-card stat-yellow rotate-l">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="stat-value" id="statTotal">4</div>
+        <div class="stat-label">Total Habits</div>
+      </div>
+
+      <div class="stat-card stat-green rotate-r">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="stat-value" id="statDone">2<span class="stat-sub">/4</span></div>
+        <div class="stat-label">Done Today</div>
+      </div>
+
+      <div class="stat-card stat-orange rotate-l">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c2 0 3-2 2-4 3 2 4 6 4 8a7 7 0 11-14 0c0-5 3-8 5-13z" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="stat-value" id="statStreak">12</div>
+        <div class="stat-label">Best Streak</div>
+      </div>
+
+      <div class="stat-card stat-blue rotate-r">
+        <div class="stat-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 3v18h18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="7" y="12" width="3" height="6" fill="currentColor"/>
+            <rect x="12" y="8" width="3" height="10" fill="currentColor"/>
+            <rect x="17" y="5" width="3" height="13" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="stat-value" id="statRate">68<span class="stat-sub">%</span></div>
+        <div class="stat-label">Completion Rate</div>
+      </div>
+    </section>
+
+    <!-- ===== CHART PANEL (opsional bonus: Chart.js) ===== -->
+    <section class="panel chart-panel">
+      <div class="panel-head">
+        <h2>Weekly Progress</h2>
+        <span class="chip chip-purple">last 7 days</span>
+      </div>
+      <div class="chart-box">
+        <canvas id="weeklyChart" height="110"></canvas>
+      </div>
+    </section>
+
+    <!-- ===== BADGES (Bonus: Badge Reward) ===== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>My Badges</h2>
+        <span class="chip chip-purple" id="badgeCountChip">0/7 unlocked</span>
+      </div>
+      <div class="badge-grid" id="badgeGrid">
+        <!-- diisi otomatis via JS -->
+      </div>
+    </section>
+
+    <!-- ===== HABIT LIST ===== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Today's Habits</h2>
+        <span class="chip chip-orange" id="todayChip">Senin, 19 Jun</span>
+      </div>
+
+      <div class="habit-grid" id="habitGrid">
+      </div>
+
+      <!-- empty state, hidden by default, dipakai JS kalau habit kosong -->
+      <div class="empty-state hidden" id="emptyState">
+        <div class="empty-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Belum ada habit</h3>
+        <p>Klik "New Habit" buat mulai bikin kebiasaan baru lo.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ===== MODAL: Add / Edit Habit ===== -->
+  <div class="modal-overlay hidden" id="habitModalOverlay">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2 id="modalTitle">New Habit</h2>
+        <button class="icon-btn close-btn" id="closeModalBtn">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <form id="habitForm" class="modal-form">
+        <input type="hidden" id="habitId">
+
+        <label class="field">
+          <span class="field-label">Nama Habit</span>
+          <input type="text" id="habitName" placeholder="cth: Lari pagi 15 menit" required>
+        </label>
+
+        <label class="field">
+          <span class="field-label">Frekuensi</span>
+          <select id="habitFrequency">
+            <option value="daily">Setiap hari</option>
+            <option value="weekdays">Hari kerja (Sen-Jum)</option>
+            <option value="weekly">Seminggu sekali</option>
+          </select>
+        </label>
+
+        <div class="field">
+          <span class="field-label">Warna Kartu</span>
+          <div class="color-picker" id="colorPicker">
+            <button type="button" class="color-dot dot-blue selected" data-color="blue"></button>
+            <button type="button" class="color-dot dot-green" data-color="green"></button>
+            <button type="button" class="color-dot dot-orange" data-color="orange"></button>
+            <button type="button" class="color-dot dot-pink" data-color="pink"></button>
+            <button type="button" class="color-dot dot-purple" data-color="purple"></button>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" id="cancelModalBtn">Batal</button>
+          <button type="submit" class="btn btn-primary">Simpan Habit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- libs (dipakai nanti pas tahap JS) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="script.js"></script>
+</body>
+</html>

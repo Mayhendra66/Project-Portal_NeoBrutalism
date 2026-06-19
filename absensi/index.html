@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Absensi Digital — Neo Brutalism</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+
+  <div class="wrap">
+
+    <div id="dashboardSection">
+      
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1>Absensi<span>Digital</span></h1>
+            <p class="tagline">✦ catat kehadiran tepat waktu, disiplin tanpa tapi</p>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <button class="btn btn-ghost" id="btnScanQr">
+            📷 QR Code Scan
+          </button>
+          <button class="btn btn-primary" id="btnExportExcel">
+            📊 Export Excel
+          </button>
+        </div>
+      </header>
+
+      <section class="stats">
+        <div class="stat-card stat-yellow">
+          <div class="stat-icon">📅</div>
+          <div class="stat-value" id="statHadir">0</div>
+          <div class="stat-label">Total Hadir (Bulan Ini)</div>
+        </div>
+
+        <div class="stat-card stat-green">
+          <div class="stat-icon">🤒</div>
+          <div class="stat-value" id="statIzinSakit">0</div>
+          <div class="stat-label">Izin & Sakit</div>
+        </div>
+
+        <div class="stat-card stat-pink">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-value" id="statPersentase">0%</div>
+          <div class="stat-label">Rasio Kehadiran</div>
+        </div>
+      </section>
+
+      <div class="main-layout">
+        
+        <div class="main-column">
+          <section class="panel">
+            <div class="panel-head-filter">
+              <h2>Rekap Absensi Bulanan</h2>
+              <div class="filter-row">
+                <select id="attendanceMonthFilter" class="deadline-select">
+                  <option value="all">Semua Bulan</option>
+                  <option value="01">Januari</option>
+                  <option value="02">Februari</option>
+                  <option value="03">Maret</option>
+                  <option value="04">April</option>
+                  <option value="05">Mei</option>
+                  <option value="06">Juni</option>
+                  <option value="07">Juli</option>
+                  <option value="08">Agustus</option>
+                  <option value="09">September</option>
+                  <option value="10">Oktober</option>
+                  <option value="11">November</option>
+                  <option value="12">Desember</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="transaction-list" id="attendanceLogContainer"></div>
+          </section>
+        </div>
+
+        <div class="side-column">
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Form Kehadiran</h2>
+            </div>
+            
+            <form id="attendanceForm" class="modal-form">
+              <div class="field">
+                <label class="field-label">Jam Masuk Otomatis</label>
+                <div id="liveClock" style="font-size: 1.5rem; font-weight: 700; font-family: 'Space Grotesk', sans-serif; padding: 0.5rem 0;">00:00:00</div>
+                <input type="hidden" id="txAutoTime">
+              </div>
+
+              <div class="field">
+                <label for="txStatus" class="field-label">Status Kehadiran</label>
+                <select id="txStatus" required>
+                  <option value="Hadir">Hadir</option>
+                  <option value="Izin">Izin</option>
+                  <option value="Sakit">Sakit</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="txNote" class="field-label">Keterangan / Alasan (Opsional)</label>
+                <input type="text" id="txNote" placeholder="cth: Perjalanan dinas / Sakit flu">
+              </div>
+
+              <div class="field">
+                <label class="field-label">Validasi GPS Lokasi</label>
+                <div id="geoStatus" style="font-weight: 600; font-size: 0.85rem; color: #000; margin-bottom: 0.5rem;">
+                  📍 Lokasi belum didapatkan
+                </div>
+                <button type="button" class="btn btn-ghost" id="btnGetLocation" style="width: 100%; justify-content: center; font-size: 0.85rem;">
+                  Ambil Lokasi GPS
+                </button>
+                <input type="hidden" id="txCoordinates">
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
+                📌 Kirim Kehadiran
+              </button>
+            </form>
+          </section>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+<script src="script.js"></script>
+</html>

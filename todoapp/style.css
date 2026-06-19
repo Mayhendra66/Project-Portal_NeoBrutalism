@@ -1,0 +1,554 @@
+/* ==========================================
+   RESET & VARIABLES (Sesuai Gambar)
+   ========================================== */
+:root {
+  /* Latar belakang ungu pucat */
+  --bg-color: #ede9f6; 
+  --clr-black: #000000;
+  --clr-white: #ffffff;
+  
+  /* Palet Warna Sesuai Gambar */
+  --clr-purple: #6a55fa;  /* Warna utama header / banner */
+  --clr-yellow: #fcd34d;  /* Card 1 */
+  --clr-green: #34d399;   /* Card 2 */
+  --clr-orange: #ff6b35;  /* Card 3 & Button */
+  --clr-blue: #3b82f6;    /* Card 4 */
+  
+  /* Pengaturan Struktur Neo-Brutalism Modern */
+  --border-thick: 3px solid var(--clr-black);
+  --radius-main: 16px;    /* Sudut tumpul sesuai gambar */
+  --radius-small: 8px;
+  --shadow-main: 5px 5px 0px var(--clr-black);
+  --shadow-button: 4px 4px 0px var(--clr-black);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  /* Efek Background Pola Dot sesuai gambar */
+  background-image: radial-gradient(#c4b5fd 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  color: var(--clr-black);
+  padding: 2rem 1rem;
+  min-height: 100vh;
+}
+
+/* ==========================================
+   BACKGROUND GEOMETRY SHAPES
+   ========================================== */
+.bg-shape {
+  position: absolute;
+  z-index: -1;
+  border: var(--border-thick);
+}
+.shape-1 {
+  top: -20px; right: -20px;
+  width: 120px; height: 120px;
+  background: var(--clr-yellow);
+  border-radius: 50%;
+}
+.shape-2 {
+  bottom: 10%; left: -30px;
+  width: 100px; height: 80px;
+  background: var(--clr-orange);
+  border-radius: var(--radius-main);
+  transform: rotate(-15deg);
+}
+.shape-3 {
+  display: none; /* Dinonaktifkan agar bersih seperti gambar */
+}
+
+/* ==========================================
+   LAYOUT WRAPPER
+   ========================================== */
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ==========================================
+   HEADER / TOPBAR
+   ========================================== */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  background-color: var(--clr-black);
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+  box-shadow: var(--shadow-button);
+  color: var(--clr-yellow);
+  text-decoration: none;
+}
+.brand-mark svg {
+  width: 28px;
+  height: 28px;
+}
+
+.brand-text h1 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.brand-text h1 span {
+  color: var(--clr-purple);
+}
+.brand-text .tagline {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+  margin-top: 0.2rem;
+}
+
+/* ==========================================
+   BUTTONS
+   ========================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  padding: 0.8rem 1.6rem;
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.btn-primary {
+  background-color: var(--clr-orange);
+  color: var(--clr-white);
+  box-shadow: var(--shadow-button);
+}
+.btn-primary svg {
+  width: 18px;
+  height: 18px;
+}
+.btn-primary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--clr-black);
+}
+.btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--clr-black);
+}
+
+.btn-ghost {
+  background-color: var(--clr-white);
+  box-shadow: var(--shadow-button);
+}
+.btn-ghost:hover {
+  background-color: #f3f4f6;
+}
+
+/* ==========================================
+   REMINDER BANNER (Quote Bar)
+   ========================================== */
+.reminder-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--clr-purple);
+  color: var(--clr-white);
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+  box-shadow: var(--shadow-main);
+  padding: 1.2rem;
+}
+.reminder-icon svg {
+  width: 24px;
+  height: 24px;
+}
+#reminderText {
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+.reminder-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.reminder-mute, .reminder-dismiss {
+  background: var(--clr-white);
+  border: var(--border-thick);
+  border-radius: var(--radius-small);
+  padding: 0.4rem;
+  cursor: pointer;
+}
+.reminder-mute svg, .reminder-dismiss svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--clr-black);
+}
+
+/* ==========================================
+   STATS GRID
+   ========================================== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+.stat-card {
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-main);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* Reset rotasi agar lurus rapi seperti gambar */
+  transform: none !important; 
+}
+
+.stat-icon {
+  margin-bottom: 1rem;
+  opacity: 1;
+}
+.stat-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.stat-value {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.stat-sub {
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+.stat-label {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* Penyesuaian Warna Card Sesuai Gambar */
+.stat-yellow { background-color: var(--clr-yellow); }
+.stat-green  { background-color: var(--clr-green); }
+.stat-pink   { background-color: var(--clr-orange); } /* Menggunakan Oranye */
+.stat-blue   { background-color: var(--clr-blue); color: var(--clr-white); }
+.stat-blue .stat-label, .stat-blue .stat-sub { color: rgba(255, 255, 255, 0.8); }
+
+/* ==========================================
+   PANELS & FILTER BAR
+   ========================================== */
+.panel {
+  background-color: var(--clr-white);
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+  box-shadow: var(--shadow-main);
+  padding: 1.5rem;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.panel-head h2 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+.chip {
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+}
+.chip-purple { background-color: var(--clr-purple); color: var(--clr-white); }
+.chip-mini {
+  background-color: var(--clr-white);
+  border-radius: var(--radius-small);
+  padding: 0.1rem 0.5rem;
+}
+
+.chart-box {
+  background: var(--clr-white);
+  border: 2px dashed #ccc;
+  border-radius: var(--radius-small);
+  padding: 0.5rem;
+}
+
+/* Filter Row */
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.search-wrap {
+  display: flex;
+  align-items: center;
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+  background: var(--clr-white);
+  padding: 0.6rem 1rem;
+  flex-grow: 1;
+}
+.search-wrap svg {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.5rem;
+}
+.search-wrap input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: inherit;
+  font-weight: 600;
+}
+
+.filter-chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.filter-chip {
+  background: var(--clr-white);
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+  padding: 0.5rem 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.filter-chip.active {
+  background: var(--clr-yellow);
+  box-shadow: 3px 3px 0px var(--clr-black);
+  transform: translate(-1px, -1px);
+}
+
+.deadline-select {
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  background: var(--clr-white);
+  outline: none;
+  cursor: pointer;
+}
+
+/* ==========================================
+   KANBAN BOARD
+   ========================================== */
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.board-col {
+  background-color: var(--clr-white);
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+  box-shadow: var(--shadow-main);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.board-col-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.2rem;
+  border-bottom: var(--border-thick);
+}
+.board-col-head h3 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  flex-grow: 1;
+}
+
+.col-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--clr-black);
+  background-color: var(--clr-white);
+}
+
+.col-head-blue   { background-color: var(--clr-blue); color: var(--clr-white); }
+.col-head-orange { background-color: var(--clr-orange); color: var(--clr-white); }
+.col-head-green  { background-color: var(--clr-green); }
+
+.board-dropzone {
+  padding: 1rem;
+  min-height: 350px;
+  background-color: #fbfbfe;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ==========================================
+   MODAL DIALOG (Fixed Layout)
+   ========================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(112, 73, 240, 0.15);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-box {
+  background-color: var(--clr-white);
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+  box-shadow: 8px 8px 0px var(--clr-black);
+  width: 90%;
+  max-width: 500px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-head h2 {
+  font-family: 'Archivo Black', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.close-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--clr-black);
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; /* Jarak antar baris field */
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Jarak antara label dan input */
+  width: 100%;
+}
+
+.field-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--clr-black);
+}
+
+.field input[type="text"],
+.field textarea,
+.field select,
+.field input[type="date"] {
+  width: 100%; /* Mencegah input mengecil atau melebar keluar */
+  border: var(--border-thick);
+  border-radius: var(--radius-small);
+  padding: 0.7rem;
+  font-family: inherit;
+  font-weight: 600;
+  background-color: var(--clr-white);
+  box-sizing: border-box;
+  outline: none;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+/* Mengatur Status & Deadline berdampingan secara rapi */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.field input[type="text"],
+.field textarea,
+.field select,
+.field input[type="date"] {
+  border: var(--border-thick);
+  border-radius: var(--radius-small);
+  padding: 0.7rem;
+  font-family: inherit;
+  font-weight: 600;
+  background-color: var(--clr-white);
+}
+
+/* ==========================================
+   UTILITY HELPER
+   ========================================== */
+.hidden {
+  display: none !important;
+}

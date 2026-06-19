@@ -1,0 +1,355 @@
+/* ==========================================
+   VARIABLES & BASE RULES
+   ========================================== */
+:root {
+  --bg-color: #ede9f6; 
+  --clr-black: #000000;
+  --clr-white: #ffffff;
+  
+  --clr-purple: #6a55fa;  
+  --clr-yellow: #fcd34d;  
+  --clr-green: #34d399;   
+  --clr-orange: #ff6b35;  
+  --clr-blue: #3b82f6;    
+  
+  --border-thick: 3px solid var(--clr-black);
+  --radius-main: 16px;    
+  --radius-small: 8px;
+  --shadow-main: 5px 5px 0px var(--clr-black);
+  --shadow-button: 4px 4px 0px var(--clr-black);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  background-image: radial-gradient(#c4b5fd 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  color: var(--clr-black);
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Decoration Shapes */
+.bg-shape {
+  position: absolute;
+  z-index: -1;
+  border: var(--border-thick);
+}
+.shape-1 {
+  top: -10px; right: -10px;
+  width: 100px; height: 100px;
+  background: var(--clr-yellow);
+  border-radius: 50%;
+}
+.shape-2 {
+  bottom: 5%; left: -20px;
+  width: 80px; height: 80px;
+  background: var(--clr-orange);
+  border-radius: var(--radius-main);
+  transform: rotate(-15deg);
+}
+
+/* Wrapper Layout */
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ==========================================
+   HEADER / TOPBAR
+   ========================================== */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  background-color: var(--clr-black);
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+  box-shadow: var(--shadow-button);
+  color: var(--clr-yellow);
+}
+.brand-mark svg {
+  width: 28px;
+  height: 28px;
+}
+
+.brand-text h1 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.brand-text h1 span {
+  color: var(--clr-purple);
+}
+.brand-text .tagline {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #444;
+  margin-top: 0.3rem;
+}
+
+.top-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ==========================================
+   BUTTONS & FORM CONTROL
+   ========================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  padding: 0.8rem 1.4rem;
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.btn-primary {
+  background-color: var(--clr-orange);
+  color: var(--clr-white);
+  box-shadow: var(--shadow-button);
+}
+.btn-primary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--clr-black);
+}
+.btn-ghost {
+  background-color: var(--clr-white);
+  box-shadow: var(--shadow-button);
+}
+.btn-ghost:hover {
+  background-color: #f3f4f6;
+}
+
+.deadline-select {
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+  padding: 0.6rem 1rem;
+  font-weight: 700;
+  background: var(--clr-white);
+  outline: none;
+  cursor: pointer;
+}
+
+/* ==========================================
+   STATS CARDS
+   ========================================== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+.stat-card {
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-main);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.stat-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+.stat-value {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 2.2rem;
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+.stat-label {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+.stat-yellow { background-color: var(--clr-yellow); }
+.stat-green  { background-color: var(--clr-green); }
+.stat-pink   { background-color: #ff8df3; } /* Menggunakan struktur pink brutalism */
+
+/* ==========================================
+   SPLIT CONTENT GRID LAYOUT
+   ========================================== */
+.main-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.main-column, .side-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.panel {
+  background-color: var(--clr-white);
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+  box-shadow: var(--shadow-main);
+  padding: 1.5rem;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+.panel-head-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.panel-head h2, .panel-head-filter h2 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+.chip {
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border: var(--border-thick);
+  border-radius: var(--radius-main);
+}
+.chip-purple { background-color: var(--clr-purple); color: var(--clr-white); }
+
+.chart-box {
+  background: var(--clr-white);
+  border: 2px dashed var(--clr-black);
+  border-radius: var(--radius-small);
+  padding: 0.5rem;
+  min-height: 220px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* ==========================================
+   TRANSACTION ENTRIES LIST
+   ========================================== */
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border: var(--border-thick);
+  border-radius: var(--radius-small);
+  background-color: var(--clr-white);
+}
+
+.item-info h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.item-info p {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 0.2rem;
+}
+.item-info span {
+  font-weight: 600;
+  color: var(--clr-black);
+}
+
+.item-amount {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.1rem;
+}
+
+/* Warna penanda transaksi masuk/keluar */
+.entry-income { background-color: #e6fffa; }
+.entry-income .item-amount { color: #047857; }
+.entry-expense { background-color: #fff5f5; }
+.entry-expense .item-amount { color: #b91c1c; }
+
+/* ==========================================
+   INPUT TRANSACTION FORM (RIGHT SIDE)
+   ========================================== */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.field-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.field input, .field select {
+  width: 100%;
+  border: var(--border-thick);
+  border-radius: var(--radius-small);
+  padding: 0.7rem;
+  font-family: inherit;
+  font-weight: 600;
+  background-color: var(--clr-white);
+  outline: none;
+}
